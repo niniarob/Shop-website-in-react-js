@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import {Div, PriceArrow,Img, Line, P, PriceRangee} from './styles/Price.styled';
+import { Div, PriceArrow, Img, Line, P, PriceRangee } from './styles/Price.styled';
 import ArrowUp from './assets/ArrowUp.svg';
-
 
 interface PriceRangeSelectorProps {
   onChange: (value: number | number[]) => void;

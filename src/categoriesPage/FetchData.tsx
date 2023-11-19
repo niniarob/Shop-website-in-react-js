@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 interface FetchDataProps {
   url: string;
@@ -13,7 +13,7 @@ const FetchData: React.FC<FetchDataProps> = ({ url, onDataFetch }) => {
       .catch((error) => console.error('Error fetching data:', error));
   }, [url, onDataFetch]);
 
-  return null; 
+  return null;
 };
 
 export default FetchData;

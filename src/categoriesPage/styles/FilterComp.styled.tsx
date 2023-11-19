@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 
-interface CircleProps {
-  isClicked: boolean;
-}
+// interface CircleProps {
+//   isClicked: boolean;
+// }
 
 export const FilterStyles = styled.div`
 width:100%;
@@ -28,6 +28,15 @@ font-size: 14px;
 font-style: normal;
 font-weight: 600;
 line-height: 120%; 
+transition: transform 0.2s ease; /* Add transition for smoother animation */
+
+&:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+&:active {
+  transform: scale(0.95); /* Scale down on click */
+}
 `
 
 export const FlexDiv = styled.div`
@@ -59,13 +68,17 @@ align-items:center;
 gap:10px;
 `
 
-export const Circle = styled.div<CircleProps>`
-width:20px;
-height:20px;
-border-radius:50%;
-background-color: ${(props) => (props.isClicked ? '#0b0b80' : 'transparent')};
-cursor: pointer;
-border:1px solid #808080;
+interface CircleProps {
+  checked: boolean;
+}
+
+export const Circle = styled.input.attrs({ type: 'radio' })<CircleProps>`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => (props.checked ? '#0b0b80' : 'transparent')};
+  cursor: pointer;
+  border: 1px solid #808080;
 `
 
 export const H5 = styled.h5`

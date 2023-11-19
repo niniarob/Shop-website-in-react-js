@@ -9,8 +9,8 @@ justify-content:space-between;;
 `
 
 export const ProductCard = styled.div`
-width: 312px;
-height: 395px;
+width: 320px;
+height: 450px;
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -18,14 +18,24 @@ flex-shrink: 0;
 border-radius: 8px;
 border: 1px solid var(--gray-scale-gray-100, #E6E6E6);
 background: var(--gray-scale-white, #FFF);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.2s ease-in-out;
+&:hover {
+  transform: scale(1.05);
+}
 `
 
 export const FlexDiv =styled.div`
+width:90%;
 display:flex;
 justify-content:space-between;
 align-items: center;
-height:90px;
-width:calc(100% - 16px)
+margin-top:20px;
+height:50px;
+// width:calc(100% - 6px)
+// border:2px solid black;
+// border: 1px solid green;
+
 `
 export const Tittle = styled.p`
 color: var(--gray-scale-gray-700, #4D4D4D);
@@ -34,7 +44,12 @@ font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: 150%;
+margin-top:10px;
 margin:0px;
+// width:200px;
+// color: red;
+text-align:center;
+// border:1px solid red;
 `
 
 export const PriceProduct = styled.p`
@@ -55,6 +70,7 @@ align-items:start;
 
 export const DivImg  = styled.div`
 margin-top:-15px;
+// border:1px solid black;
 `
 export const BagBackground = styled.div`
 width:40px;
@@ -65,9 +81,18 @@ align-items:center;
 justify-content:center;
 border: 1px solid var(--gray-scale-gray-100, #E6E6E6);
 background: #CCCCCC;
+// border:1px solid red;
 `
 
 export const ImgBag = styled.img`
 width:20px;
 height:20px;
+`
+
+export const Iimg = styled.img`
+width:302px;
+height:302px;
+margin-top:10px;
+margin-bottom:20px;
+
 `
