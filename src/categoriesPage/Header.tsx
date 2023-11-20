@@ -6,7 +6,7 @@ import HomeImg from './assets/Home.svg';
 import Arrow from './assets/Arrow.svg';
 
 interface HeaderProps {
-  selectedCategory: string | null;
+  selectedCategory?: string | null;
 }
 
 export const Header: React.FC<HeaderProps> = ({ selectedCategory }) => {
@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedCategory }) => {
           <img src={Arrow} alt='Arrow.svg' />
           <Paragraph>Categories</Paragraph>
           <img src={Arrow} alt='Arrow.svg' />
-          <ProductName>{selectedCategory ? selectedCategory : 'Products'}</ProductName>
+          <ProductName>{selectedCategory ? selectedCategory : ""}</ProductName>
         </HeaderChild>
       </HeaderStyles>
     </>
