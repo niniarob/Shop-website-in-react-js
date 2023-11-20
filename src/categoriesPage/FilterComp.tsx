@@ -1,28 +1,53 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/FilterComp.styled';
-import { FilterStyles, Button, FlexDiv, H4, Img, Li, Circle as StyledCircle, H5, Span, Line } from './styles/FilterComp.styled';
+import {
+  FilterStyles,
+  Button,
+  FlexDiv,
+  H4,
+  Img,
+  Li,
+  Circle as StyledCircle,
+  H5,
+  Span,
+  Line,
+} from './styles/FilterComp.styled';
 import ArrowUp from './assets/ArrowUp.svg';
 import Filter from './assets/Filter.svg';
-import FetchData from './FetchData'; 
+import FetchData from './FetchData';
 
-export const FilterComp: React.FC = () => {
+interface FilterCompProps {
+  onCategoryChange: (category: string | null) => void;
+}
+
+export const FilterComp: React.FC<FilterCompProps> = ({ onCategoryChange }) => {
   const [categories, setCategories] = useState<string[]>([]);
-  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [productsCount, setProductsCount] = useState<{ [key: string]: number }>({});
 
   const handleDataFetch = (data: any[]) => {
     const uniqueCategories = [...new Set(data.map((product) => product.category))];
     setCategories(uniqueCategories);
+
+    const countByCategory: { [key: string]: number } = {};
+    data.forEach((product) => {
+      countByCategory[product.category] = (countByCategory[product.category] || 0) + 1;
+    });
+    setProductsCount(countByCategory);
   };
 
-  const handleCircleClick = (index: number) => {
-    setClickedIndex(index === clickedIndex ? null : index);
+  const handleCircleClick = (category: string) => {
+    setSelectedCategory((prevCategory) => (prevCategory === category ? null : category));
+  };
+
+  const handleFilterClick = () => {
+    onCategoryChange(selectedCategory);
   };
 
   return (
     <>
       <FilterStyles>
-        <Button>
+        <Button onClick={handleFilterClick}>
           Filter <img src={Filter} alt='Filter.svg' />
         </Button>
         <FlexDiv>
@@ -35,18 +60,17 @@ export const FilterComp: React.FC = () => {
         {categories.map((category, index) => (
           <Li key={index}>
             <StyledCircle
-              isClicked={index === clickedIndex}
-              onClick={() => handleCircleClick(index)}
-            ></StyledCircle>
+              type='radio'
+              checked={category === selectedCategory}
+              onChange={() => handleCircleClick(category)}
+              name='categoryGroup'
+            />
             <H5>
-              {category} <Span>({categories.length})</Span>
+              {category} <Span>({productsCount[category] || 0})</Span>
             </H5>
           </Li>
-          
-
-          // test comment
         ))}
-        <Line></Line>
+        <Line />
       </FilterStyles>
     </>
   );
