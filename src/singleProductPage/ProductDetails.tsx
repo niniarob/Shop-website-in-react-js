@@ -1,21 +1,38 @@
+import React from 'react';
 import './styles/ProductDetails.styled';
 import{ParentDiv, ProductsImg, ColumnDiv, H1, ProductPrice, DivLine, Description, ButtonDiv, Button, HeartDiv, CategoryTag, Span} from './styles/ProductDetails.styled';
 import Rectangle from './assets/Rectangle.svg';
 import Heart from './assets/Heart.svg';
+import { useLocation } from 'react-router-dom';
 
 
-export const ProductDetails = () => {
+interface Product {
+    image: string;
+    title: string;
+    price: number;
+    description:string;
+    category:string;
+  }
+
+const ProductDetails: React.FC = () => {
+
+    const location = useLocation();
+    const { product } = location.state as { product: Product };
+  
+    if (!product) {
+      return <div>No product information available.</div>;
+    }
+
+
     return(
         <ParentDiv>
-            <ProductsImg />
+            <ProductsImg src={product.image} alt={product.title}/>
             <ColumnDiv>
-            <H1> Chinese Cabbage </H1>
-            <ProductPrice> $17.28 </ProductPrice>
+            <H1> {product.title}</H1>
+            <ProductPrice>${product.price}</ProductPrice>
             <DivLine></DivLine>
             <Description>
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra, 
-            per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, 
-            ultrices et ipsum. Nulla varius magna a consequat pulvinar. 
+                {product.description}
             </Description>
             <DivLine></DivLine>
             <ButtonDiv>
@@ -25,8 +42,10 @@ export const ProductDetails = () => {
                 </HeartDiv>
             </ButtonDiv>
             <DivLine></DivLine>
-            <CategoryTag>Category: <Span>Vegatables</Span></CategoryTag>
+            <CategoryTag>{product.category}:  <Span>{product.title}</Span></CategoryTag>
             </ColumnDiv>
         </ParentDiv>
     )
 };
+
+export default ProductDetails;

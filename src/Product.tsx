@@ -4,7 +4,7 @@ import { ProductCards } from './categoriesPage/ProductCardsCopm';
 import PriceRangeSelector from './categoriesPage/PriceRangeSelector';
 
 
-export const Product: React.FC = () => {
+const Product: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   
@@ -35,4 +35,5 @@ export const Product: React.FC = () => {
         <ProductCards products={filteredProducts} />
       </div>
     )
-}
+};
+export default Product;

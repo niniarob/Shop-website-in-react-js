@@ -32,10 +32,6 @@ justify-content:space-between;
 align-items: center;
 margin-top:20px;
 height:50px;
-// width:calc(100% - 6px)
-// border:2px solid black;
-// border: 1px solid green;
-
 `
 export const Tittle = styled.p`
 color: var(--gray-scale-gray-700, #4D4D4D);
@@ -46,10 +42,7 @@ font-weight: 400;
 line-height: 150%;
 margin-top:10px;
 margin:0px;
-// width:200px;
-// color: red;
 text-align:center;
-// border:1px solid red;
 `
 
 export const PriceProduct = styled.p`
@@ -70,8 +63,8 @@ align-items:start;
 
 export const DivImg  = styled.div`
 margin-top:-15px;
-// border:1px solid black;
 `
+
 export const BagBackground = styled.div`
 width:40px;
 height:40px;
@@ -81,7 +74,12 @@ align-items:center;
 justify-content:center;
 border: 1px solid var(--gray-scale-gray-100, #E6E6E6);
 background: #CCCCCC;
-// border:1px solid red;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.1s ease-in-out;
+&:hover {
+  transform: scale(1.1);
+  background: #42426b;
+}
 `
 
 export const ImgBag = styled.img`
@@ -94,5 +92,4 @@ width:302px;
 height:302px;
 margin-top:10px;
 margin-bottom:20px;
-
 `

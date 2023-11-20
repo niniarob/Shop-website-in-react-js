@@ -16,7 +16,9 @@ export const Header: React.FC<HeaderProps> = ({ selectedCategory }) => {
         <HeaderChild>
           <img src={HomeImg} alt='Home.svg' />
           <img src={Arrow} alt='Arrow.svg' />
-          <Paragraph>Categories</Paragraph>
+
+            <Paragraph>Categories</Paragraph>
+
           <img src={Arrow} alt='Arrow.svg' />
           <ProductName>{selectedCategory ? selectedCategory : ""}</ProductName>
         </HeaderChild>

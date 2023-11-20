@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './styles/ProductCardsComp.styled';
 import {
   ProductCard,
@@ -17,9 +18,12 @@ import StarEmpty from './assets/Star 5.svg';
 import Bag from './assets/Bag.svg';
 
 interface Product {
+  id:number;
   image: string;
   title: string;
   price: number;
+  description:string;
+  category:string;
 }
 
 interface ProductCardsProps {
@@ -27,6 +31,12 @@ interface ProductCardsProps {
 }
 
 export const ProductCards: React.FC<ProductCardsProps> = ({ products }) => {
+  const navigate = useNavigate();
+
+  const handleBagClick = (product: Product) => {
+    navigate(`/product-details/${product.title}`, { state: { product } });
+  };
+
   return (
     <>
       <FlexWrap>
@@ -45,7 +55,7 @@ export const ProductCards: React.FC<ProductCardsProps> = ({ products }) => {
                   <img src={StarEmpty} alt='Star 5' />
                 </DivImg>
               </TitlePrice>
-              <BagBackground>
+              <BagBackground onClick={() => handleBagClick(product)}>
                 <ImgBag src={Bag} alt='Bag.svg' />
               </BagBackground>
             </FlexDiv>

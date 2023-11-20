@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
 export const ParentDiv = styled.div`
+// width:100%;
 width: calc(100% - 300px);
+// height:100vh;
 // border:1px solid red;
 display:flex;
 flex-direction:row;
 justify-content:space-between;
 align-items:center;
+margin-top:80px;
+// gap:50px;
 margin-bottom:60px;
+
 `
 
 export const ProductsImg = styled.img`
@@ -29,10 +34,14 @@ align-items:start;
 export const H1 = styled.h1`
 color: var(--gray-scale-gray-900, #1A1A1A);
 font-family: Poppins;
-font-size: 36px;
+font-size: 30px;
 font-style: normal;
+text-align:start;
 font-weight: 600;
 line-height: 120%; 
+// border:1px solid red;
+margin-top:0;
+
 `
 
 export const ProductPrice = styled.p`
@@ -111,6 +120,7 @@ font-size: 14px;
 font-style: normal;
 font-weight: 500;
 line-height: 150%;
+text-align:start;
 `
 
 export const Span = styled.span`
@@ -120,5 +130,6 @@ font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: 150%;
+text-align:start;
 
 `
